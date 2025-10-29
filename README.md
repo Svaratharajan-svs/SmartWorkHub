@@ -40,3 +40,30 @@ src/
 tests/
 ├── SmartWorkHub.UnitTests/
 └── SmartWorkHub.IntegrationTests/
+
+## 🧩 Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| Backend | ASP.NET Core 9, C# 12 |
+| Database | SQL Server, Redis |
+| ORM | EF Core, Dapper |
+| Messaging | RabbitMQ, MassTransit |
+| Real-time | SignalR |
+| Validation | FluentValidation |
+| Logging | Serilog |
+| Mapping | AutoMapper |
+| Testing | XUnit, NSubstitute, AutoFixture |
+| CI/CD | GitHub Actions / Azure DevOps |
+| Frontend | Blazor Server / Razor Pages |
+
+---
+
+## 🧪 Run Locally
+
+```bash
+git clone https://github.com/<your-username>/SmartWorkHub.git
+cd SmartWorkHub
+dotnet restore
+dotnet build
+dotnet run --project src/SmartWorkHub.API
