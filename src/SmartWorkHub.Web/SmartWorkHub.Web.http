@@ -1,0 +1,6 @@
+@SmartWorkHub.Web_HostAddress = http://localhost:5199
+
+GET {{SmartWorkHub.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
