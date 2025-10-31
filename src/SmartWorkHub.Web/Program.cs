@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SmartWorkHub.Infrastructure.Persistence;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using SmartWorkHub.Domain.Interfaces;
+using SmartWorkHub.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services
@@ -15,6 +17,13 @@ builder.Services.AddDbContext<SmartWorkHubDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
+// add repository to DI
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+
+// Add Cotrollers + swagger
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure HTTP pipeline
@@ -24,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHttpsRedirection();
 app.MapControllers();
-app.MapGet("/", () => "SmartWorkHub API running ✅");
 
 app.Run();
